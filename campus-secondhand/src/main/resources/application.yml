@@ -1,0 +1,19 @@
+server:
+  port:8080
+spring:
+  application:
+    name:campus-secondhand
+  # TODO 更改数据库相关资源
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/campus-secondhand?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 1234
+  main:
+    banner-mode: off    # 关闭SpringBoot启动图标(banner)
+# mybatis-plus日志控制台输出
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    banner: off # 关闭mybatisplus启动图标
