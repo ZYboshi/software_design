@@ -11,35 +11,23 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-
-@TableName("user")
+@TableName("admin")
 @Accessors(chain = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User implements Serializable {
+public class Admin implements Serializable {
     private static final long serialVersionUID = 1L;
+
     /**
      * 主键
      */
-    @TableId(value = "userId", type = IdType.AUTO)
-    private Long userId;
+    @TableId(value = "adminId", type = IdType.AUTO)
+    private Long adminId;
     /**
      * 用户名
      */
     private String userName;
-    /**
-     * 身份证号
-     */
-    private String idNumber;
-    /**
-     * 性别
-     */
-    private String gender;
-    /**
-     * 上次登录时间
-     */
-    private LocalDateTime lastLoginTime;
     /**
      * 密码
      */
@@ -52,4 +40,12 @@ public class User implements Serializable {
      * 电话
      */
     private String phone;
+    /**
+     * 等级
+     */
+    private String permissionLevel;
+    /**
+     * 上次登录时间
+     */
+    private LocalDateTime lastLoginTime;
 }
