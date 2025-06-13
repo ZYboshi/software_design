@@ -202,11 +202,6 @@ public class NewsController {
                         for(List<String> data:dataList){
                             //循环
                             NewsEntity newsEntity = new NewsEntity();
-//                            newsEntity.setNewsName(data.get(0));                    //公告标题 要改的
-//                            newsEntity.setNewsPhoto("");//照片
-//                            newsEntity.setNewsTypes(Integer.valueOf(data.get(0)));   //公告类型 要改的
-//                            newsEntity.setNewsContent("");//照片
-//                            newsEntity.setCreateTime(date);//时间
                             newsList.add(newsEntity);
 
 

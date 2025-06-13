@@ -9,7 +9,7 @@ import java.net.URL;
 /**
  * HttpClient工具类
  */
-public class HttpClientUtils {
+public class  HttpClientUtils {
 
     /**
      * @param uri

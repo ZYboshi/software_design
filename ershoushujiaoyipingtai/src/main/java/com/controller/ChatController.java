@@ -66,9 +66,7 @@ public class ChatController {
     public R page(@RequestParam Map<String, Object> params, HttpServletRequest request){
         logger.debug("page方法:,,Controller:{},,params:{}",this.getClass().getName(),JSONObject.toJSONString(params));
         String role = String.valueOf(request.getSession().getAttribute("role"));
-        if(false)
-            return R.error(511,"永不会进入");
-        else if("用户".equals(role))
+        if("用户".equals(role))
             params.put("yonghuId",request.getSession().getAttribute("userId"));
         if(params.get("orderBy")==null || params.get("orderBy")==""){
             params.put("orderBy","id");
@@ -119,9 +117,7 @@ public class ChatController {
         logger.debug("save方法:,,Controller:{},,chat:{}",this.getClass().getName(),chat.toString());
 
         String role = String.valueOf(request.getSession().getAttribute("role"));
-        if(false)
-            return R.error(511,"永远不会进入");
-        else if("用户".equals(role))
+        if("用户".equals(role))
             chat.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
 
         Wrapper<ChatEntity> queryWrapper = new EntityWrapper<ChatEntity>()
@@ -151,10 +147,8 @@ public class ChatController {
         logger.debug("update方法:,,Controller:{},,chat:{}",this.getClass().getName(),chat.toString());
 
         String role = String.valueOf(request.getSession().getAttribute("role"));
-//        if(false)
-//            return R.error(511,"永远不会进入");
-//        else if("用户".equals(role))
-//            chat.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
+        if("用户".equals(role))
+            chat.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
         //根据字段查询是否有相同数据
         Wrapper<ChatEntity> queryWrapper = new EntityWrapper<ChatEntity>()
             .notIn("id",chat.getId())
@@ -215,17 +209,7 @@ public class ChatController {
                         for(List<String> data:dataList){
                             //循环
                             ChatEntity chatEntity = new ChatEntity();
-//                            chatEntity.setYonghuId(Integer.valueOf(data.get(0)));   //提问用户 要改的
-//                            chatEntity.setChatIssue(data.get(0));                    //问题 要改的
-//                            chatEntity.setIssueTime(new Date(data.get(0)));          //问题时间 要改的
-//                            chatEntity.setChatReply(data.get(0));                    //回复 要改的
-//                            chatEntity.setReplyTime(new Date(data.get(0)));          //回复时间 要改的
-//                            chatEntity.setZhuangtaiTypes(Integer.valueOf(data.get(0)));   //状态 要改的
-//                            chatEntity.setChatTypes(Integer.valueOf(data.get(0)));   //数据类型 要改的
-//                            chatEntity.setInsertTime(date);//时间
                             chatList.add(chatEntity);
-
-
                             //把要查询是否重复的字段放入map中
                         }
 

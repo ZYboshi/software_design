@@ -55,7 +55,6 @@ public class AddressView extends AddressEntity implements Serializable {
 		try {
 			BeanUtils.copyProperties(this, addressEntity);
 		} catch (IllegalAccessException | InvocationTargetException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

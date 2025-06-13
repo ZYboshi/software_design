@@ -66,9 +66,7 @@ public class AddressController {
     public R page(@RequestParam Map<String, Object> params, HttpServletRequest request){
         logger.debug("page方法:,,Controller:{},,params:{}",this.getClass().getName(),JSONObject.toJSONString(params));
         String role = String.valueOf(request.getSession().getAttribute("role"));
-        if(false)
-            return R.error(511,"永不会进入");
-        else if("用户".equals(role))
+        if("用户".equals(role))
             params.put("yonghuId",request.getSession().getAttribute("userId"));
         if(params.get("orderBy")==null || params.get("orderBy")==""){
             params.put("orderBy","id");
@@ -119,9 +117,7 @@ public class AddressController {
         logger.debug("save方法:,,Controller:{},,address:{}",this.getClass().getName(),address.toString());
 
         String role = String.valueOf(request.getSession().getAttribute("role"));
-        if(false)
-            return R.error(511,"永远不会进入");
-        else if("用户".equals(role))
+        if("用户".equals(role))
             address.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
 
         Wrapper<AddressEntity> queryWrapper = new EntityWrapper<AddressEntity>()
@@ -161,10 +157,8 @@ public class AddressController {
         logger.debug("update方法:,,Controller:{},,address:{}",this.getClass().getName(),address.toString());
 
         String role = String.valueOf(request.getSession().getAttribute("role"));
-//        if(false)
-//            return R.error(511,"永远不会进入");
-//        else if("用户".equals(role))
-//            address.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
+        if("用户".equals(role))
+            address.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
         //根据字段查询是否有相同数据
         Wrapper<AddressEntity> queryWrapper = new EntityWrapper<AddressEntity>()
             .notIn("id",address.getId())
@@ -235,17 +229,7 @@ public class AddressController {
                         for(List<String> data:dataList){
                             //循环
                             AddressEntity addressEntity = new AddressEntity();
-//                            addressEntity.setYonghuId(Integer.valueOf(data.get(0)));   //创建用户 要改的
-//                            addressEntity.setAddressName(data.get(0));                    //收货人 要改的
-//                            addressEntity.setAddressPhone(data.get(0));                    //电话 要改的
-//                            addressEntity.setAddressDizhi(data.get(0));                    //地址 要改的
-//                            addressEntity.setIsdefaultTypes(Integer.valueOf(data.get(0)));   //是否默认地址 要改的
-//                            addressEntity.setInsertTime(date);//时间
-//                            addressEntity.setUpdateTime(new Date(data.get(0)));          //修改时间 要改的
-//                            addressEntity.setCreateTime(date);//时间
                             addressList.add(addressEntity);
-
-
                             //把要查询是否重复的字段放入map中
                                 //电话
                                 if(seachFields.containsKey("addressPhone")){
@@ -311,8 +295,6 @@ public class AddressController {
         logger.debug("detail方法:,,Controller:{},,id:{}",this.getClass().getName(),id);
         AddressEntity address = addressService.selectById(id);
             if(address !=null){
-
-
                 //entity转view
                 AddressView view = new AddressView();
                 BeanUtils.copyProperties( address , view );//把实体数据重构到view中

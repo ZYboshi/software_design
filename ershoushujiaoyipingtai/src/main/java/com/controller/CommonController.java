@@ -395,7 +395,7 @@ public class CommonController{
     /**
      * 柱状图求和
      */
-    @RequestMapping("/barSum")
+		@RequestMapping("/barSum")
     public R barSum(@RequestParam Map<String,Object> params) {
         logger.debug("barSum方法:,,Controller:{},,params:{}",this.getClass().getName(), com.alibaba.fastjson.JSONObject.toJSONString(params));
         Boolean isJoinTableFlag =  false;//是否有级联表相关

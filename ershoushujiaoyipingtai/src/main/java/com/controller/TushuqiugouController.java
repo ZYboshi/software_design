@@ -152,10 +152,8 @@ public class TushuqiugouController {
         logger.debug("update方法:,,Controller:{},,tushuqiugou:{}",this.getClass().getName(),tushuqiugou.toString());
 
         String role = String.valueOf(request.getSession().getAttribute("role"));
-//        if(false)
-//            return R.error(511,"永远不会进入");
-//        else if("用户".equals(role))
-//            tushuqiugou.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
+        if("用户".equals(role))
+            tushuqiugou.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
         //根据字段查询是否有相同数据
         Wrapper<TushuqiugouEntity> queryWrapper = new EntityWrapper<TushuqiugouEntity>()
             .notIn("id",tushuqiugou.getId())
@@ -220,15 +218,6 @@ public class TushuqiugouController {
                         for(List<String> data:dataList){
                             //循环
                             TushuqiugouEntity tushuqiugouEntity = new TushuqiugouEntity();
-//                            tushuqiugouEntity.setYonghuId(Integer.valueOf(data.get(0)));   //用户 要改的
-//                            tushuqiugouEntity.setTushuqiugouName(data.get(0));                    //图书名称 要改的
-//                            tushuqiugouEntity.setTushuqiugouPhoto("");//照片
-//                            tushuqiugouEntity.setTushuqiugouZuozhe(data.get(0));                    //作者 要改的
-//                            tushuqiugouEntity.setTushuqiugouChubanshe(data.get(0));                    //出版社 要改的
-//                            tushuqiugouEntity.setTushuTypes(Integer.valueOf(data.get(0)));   //图书类型 要改的
-//                            tushuqiugouEntity.setTushuqiugouTypes(Integer.valueOf(data.get(0)));   //图书求购状态 要改的
-//                            tushuqiugouEntity.setTushuqiugouContent("");//照片
-//                            tushuqiugouEntity.setCreateTime(date);//时间
                             tushuqiugouList.add(tushuqiugouEntity);
 
 

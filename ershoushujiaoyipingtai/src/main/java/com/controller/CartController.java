@@ -68,9 +68,7 @@ public class CartController {
     public R page(@RequestParam Map<String, Object> params, HttpServletRequest request){
         logger.debug("page方法:,,Controller:{},,params:{}",this.getClass().getName(),JSONObject.toJSONString(params));
         String role = String.valueOf(request.getSession().getAttribute("role"));
-        if(false)
-            return R.error(511,"永不会进入");
-        else if("用户".equals(role))
+        if("用户".equals(role))
             params.put("yonghuId",request.getSession().getAttribute("userId"));
         if(params.get("orderBy")==null || params.get("orderBy")==""){
             params.put("orderBy","id");
@@ -128,9 +126,7 @@ public class CartController {
         logger.debug("save方法:,,Controller:{},,cart:{}",this.getClass().getName(),cart.toString());
 
         String role = String.valueOf(request.getSession().getAttribute("role"));
-        if(false)
-            return R.error(511,"永远不会进入");
-        else if("用户".equals(role))
+        if("用户".equals(role))
             cart.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
 
         Wrapper<CartEntity> queryWrapper = new EntityWrapper<CartEntity>()
@@ -159,10 +155,8 @@ public class CartController {
         logger.debug("update方法:,,Controller:{},,cart:{}",this.getClass().getName(),cart.toString());
 
         String role = String.valueOf(request.getSession().getAttribute("role"));
-//        if(false)
-//            return R.error(511,"永远不会进入");
-//        else if("用户".equals(role))
-//            cart.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
+        if("用户".equals(role))
+            cart.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
         //根据字段查询是否有相同数据
         Wrapper<CartEntity> queryWrapper = new EntityWrapper<CartEntity>()
             .notIn("id",cart.getId())
@@ -222,14 +216,7 @@ public class CartController {
                         for(List<String> data:dataList){
                             //循环
                             CartEntity cartEntity = new CartEntity();
-//                            cartEntity.setYonghuId(Integer.valueOf(data.get(0)));   //所属用户 要改的
-//                            cartEntity.setTushuId(Integer.valueOf(data.get(0)));   //图书 要改的
-//                            cartEntity.setBuyNumber(Integer.valueOf(data.get(0)));   //购买数量 要改的
-//                            cartEntity.setCreateTime(date);//时间
-//                            cartEntity.setUpdateTime(new Date(data.get(0)));          //更新时间 要改的
-//                            cartEntity.setInsertTime(date);//时间
                             cartList.add(cartEntity);
-
 
                             //把要查询是否重复的字段放入map中
                         }
@@ -278,8 +265,6 @@ public class CartController {
         logger.debug("detail方法:,,Controller:{},,id:{}",this.getClass().getName(),id);
         CartEntity cart = cartService.selectById(id);
             if(cart !=null){
-
-
                 //entity转view
                 CartView view = new CartView();
                 BeanUtils.copyProperties( cart , view );//把实体数据重构到view中

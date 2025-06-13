@@ -147,10 +147,8 @@ public class TushuLiuyanController {
         logger.debug("update方法:,,Controller:{},,tushuLiuyan:{}",this.getClass().getName(),tushuLiuyan.toString());
 
         String role = String.valueOf(request.getSession().getAttribute("role"));
-//        if(false)
-//            return R.error(511,"永远不会进入");
-//        else if("用户".equals(role))
-//            tushuLiuyan.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
+        if("用户".equals(role))
+            tushuLiuyan.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
         //根据字段查询是否有相同数据
         Wrapper<TushuLiuyanEntity> queryWrapper = new EntityWrapper<TushuLiuyanEntity>()
             .eq("id",0)
@@ -206,13 +204,6 @@ public class TushuLiuyanController {
                         for(List<String> data:dataList){
                             //循环
                             TushuLiuyanEntity tushuLiuyanEntity = new TushuLiuyanEntity();
-//                            tushuLiuyanEntity.setTushuId(Integer.valueOf(data.get(0)));   //图书 要改的
-//                            tushuLiuyanEntity.setYonghuId(Integer.valueOf(data.get(0)));   //用户 要改的
-//                            tushuLiuyanEntity.setTushuLiuyanText(data.get(0));                    //留言内容 要改的
-//                            tushuLiuyanEntity.setReplyText(data.get(0));                    //回复内容 要改的
-//                            tushuLiuyanEntity.setInsertTime(date);//时间
-//                            tushuLiuyanEntity.setUpdateTime(new Date(data.get(0)));          //回复时间 要改的
-//                            tushuLiuyanEntity.setCreateTime(date);//时间
                             tushuLiuyanList.add(tushuLiuyanEntity);
 
 

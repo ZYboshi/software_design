@@ -72,9 +72,7 @@ private CartService cartService;
     public R page(@RequestParam Map<String, Object> params, HttpServletRequest request){
         logger.debug("page方法:,,Controller:{},,params:{}",this.getClass().getName(),JSONObject.toJSONString(params));
         String role = String.valueOf(request.getSession().getAttribute("role"));
-        if(false)
-            return R.error(511,"永不会进入");
-        else if("用户".equals(role))
+        if("用户".equals(role))
             params.put("yonghuId",request.getSession().getAttribute("userId"));
         if(params.get("orderBy")==null || params.get("orderBy")==""){
             params.put("orderBy","id");
@@ -139,9 +137,7 @@ private CartService cartService;
         logger.debug("save方法:,,Controller:{},,tushuOrder:{}",this.getClass().getName(),tushuOrder.toString());
 
         String role = String.valueOf(request.getSession().getAttribute("role"));
-        if(false)
-            return R.error(511,"永远不会进入");
-        else if("用户".equals(role))
+        if("用户".equals(role))
             tushuOrder.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
 
         tushuOrder.setInsertTime(new Date());
@@ -158,10 +154,8 @@ private CartService cartService;
         logger.debug("update方法:,,Controller:{},,tushuOrder:{}",this.getClass().getName(),tushuOrder.toString());
 
         String role = String.valueOf(request.getSession().getAttribute("role"));
-//        if(false)
-//            return R.error(511,"永远不会进入");
-//        else if("用户".equals(role))
-//            tushuOrder.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
+        if("用户".equals(role))
+            tushuOrder.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
         //根据字段查询是否有相同数据
         Wrapper<TushuOrderEntity> queryWrapper = new EntityWrapper<TushuOrderEntity>()
             .eq("id",0)
@@ -216,18 +210,6 @@ private CartService cartService;
                         for(List<String> data:dataList){
                             //循环
                             TushuOrderEntity tushuOrderEntity = new TushuOrderEntity();
-//                            tushuOrderEntity.setTushuOrderUuidNumber(data.get(0));                    //订单号 要改的
-//                            tushuOrderEntity.setAddressId(Integer.valueOf(data.get(0)));   //送货地址 要改的
-//                            tushuOrderEntity.setTushuId(Integer.valueOf(data.get(0)));   //图书 要改的
-//                            tushuOrderEntity.setYonghuId(Integer.valueOf(data.get(0)));   //用户 要改的
-//                            tushuOrderEntity.setBuyNumber(Integer.valueOf(data.get(0)));   //购买数量 要改的
-//                            tushuOrderEntity.setTushuOrderCourierNumber(data.get(0));                    //快递单号 要改的
-//                            tushuOrderEntity.setTushuOrderCourierName(data.get(0));                    //快递公司 要改的
-//                            tushuOrderEntity.setTushuOrderTruePrice(data.get(0));                    //实付价格 要改的
-//                            tushuOrderEntity.setTushuOrderTypes(Integer.valueOf(data.get(0)));   //订单类型 要改的
-//                            tushuOrderEntity.setTushuOrderPaymentTypes(Integer.valueOf(data.get(0)));   //支付类型 要改的
-//                            tushuOrderEntity.setInsertTime(date);//时间
-//                            tushuOrderEntity.setCreateTime(date);//时间
                             tushuOrderList.add(tushuOrderEntity);
 
 
@@ -341,8 +323,6 @@ private CartService cartService;
             }
             // Double tushuNewMoney = tushuEntity.getTushuNewMoney();
 
-            if(false){
-            }
             else if((tushuEntity.getTushuKucunNumber() -tushuOrder.getBuyNumber())<0){
                 return R.error(511,"购买数量不能大于库存数量");
             }

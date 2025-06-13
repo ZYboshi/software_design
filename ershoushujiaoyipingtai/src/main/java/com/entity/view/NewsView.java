@@ -55,14 +55,4 @@ public class NewsView extends NewsEntity implements Serializable {
 
 
 
-
-
-
-
-
-
-
-
-
-
 }

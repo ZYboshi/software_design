@@ -86,22 +86,6 @@ public class PoiUtil {
 
             PoiUtil.poiExport(lists, "C:/Users/Administrator/Desktop/工作1.xls");
 
-//
-//            List<List<String>> list = new ArrayList<>();
-//            ArrayList<String> dataList = new ArrayList<>();
-//            dataList.add("标题1");
-//            dataList.add("标题2");
-//            dataList.add("标题3");
-//            list.add(dataList);
-//            // 追加数据
-//            for (int i = 1; i < 10; i++) {// 这里的int 起始是1 也就是第二行开始
-//                ArrayList<String> dataList111 = new ArrayList<>();
-//                dataList111.add("内容" + i);
-//                dataList111.add("内容1111111121222222222333333333377777777411111111477777777" + i);
-//                dataList111.add("内容" + i);
-//                list.add(dataList111);
-//            }
-//            PoiUtil.poiExport(list, "C:/Users/Administrator/Desktop/工作1.xls");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -66,9 +66,7 @@ public class TushuController {
     public R page(@RequestParam Map<String, Object> params, HttpServletRequest request){
         logger.debug("page方法:,,Controller:{},,params:{}",this.getClass().getName(),JSONObject.toJSONString(params));
         String role = String.valueOf(request.getSession().getAttribute("role"));
-        if(false)
-            return R.error(511,"永不会进入");
-        else if("用户".equals(role))
+        if("用户".equals(role))
             params.put("yonghuId",request.getSession().getAttribute("userId"));
         params.put("tushuDeleteStart",1);params.put("tushuDeleteEnd",1);
         if(params.get("orderBy")==null || params.get("orderBy")==""){
@@ -120,9 +118,7 @@ public class TushuController {
         logger.debug("save方法:,,Controller:{},,tushu:{}",this.getClass().getName(),tushu.toString());
 
         String role = String.valueOf(request.getSession().getAttribute("role"));
-        if(false)
-            return R.error(511,"永远不会进入");
-        else if("用户".equals(role))
+        if("用户".equals(role))
             tushu.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
 
         Wrapper<TushuEntity> queryWrapper = new EntityWrapper<TushuEntity>()
@@ -159,10 +155,8 @@ public class TushuController {
         logger.debug("update方法:,,Controller:{},,tushu:{}",this.getClass().getName(),tushu.toString());
 
         String role = String.valueOf(request.getSession().getAttribute("role"));
-//        if(false)
-//            return R.error(511,"永远不会进入");
-//        else if("用户".equals(role))
-//            tushu.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
+        if("用户".equals(role))
+            tushu.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
         //根据字段查询是否有相同数据
         Wrapper<TushuEntity> queryWrapper = new EntityWrapper<TushuEntity>()
             .notIn("id",tushu.getId())
@@ -239,24 +233,7 @@ public class TushuController {
                         for(List<String> data:dataList){
                             //循环
                             TushuEntity tushuEntity = new TushuEntity();
-//                            tushuEntity.setYonghuId(Integer.valueOf(data.get(0)));   //用户 要改的
-//                            tushuEntity.setTushuName(data.get(0));                    //图书名称 要改的
-//                            tushuEntity.setTushuPhoto("");//照片
-//                            tushuEntity.setTushuZuozhe(data.get(0));                    //作者 要改的
-//                            tushuEntity.setTushuChubanshe(data.get(0));                    //出版社 要改的
-//                            tushuEntity.setTushuTypes(Integer.valueOf(data.get(0)));   //图书类型 要改的
-//                            tushuEntity.setTushuKucunNumber(Integer.valueOf(data.get(0)));   //图书库存 要改的
-//                            tushuEntity.setTushuOldMoney(data.get(0));                    //图书原价 要改的
-//                            tushuEntity.setTushuNewMoney(data.get(0));                    //现价 要改的
-//                            tushuEntity.setTushuClicknum(Integer.valueOf(data.get(0)));   //点击次数 要改的
-//                            tushuEntity.setShangxiaTypes(Integer.valueOf(data.get(0)));   //是否上架 要改的
-//                            tushuEntity.setTushuDelete(1);//逻辑删除字段
-//                            tushuEntity.setTushuContent("");//照片
-//                            tushuEntity.setCreateTime(date);//时间
                             tushuList.add(tushuEntity);
-
-
-                            //把要查询是否重复的字段放入map中
                         }
 
                         //查询是否重复

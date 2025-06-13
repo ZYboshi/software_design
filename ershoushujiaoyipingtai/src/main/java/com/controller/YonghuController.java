@@ -298,11 +298,6 @@ public class YonghuController {
         YonghuEntity yonghu = yonghuService.selectOne(new EntityWrapper<YonghuEntity>().eq("username", username));
         if(yonghu==null || !yonghu.getPassword().equals(password))
             return R.error("账号或密码不正确");
-        //  // 获取监听器中的字典表
-        // ServletContext servletContext = ContextLoader.getCurrentWebApplicationContext().getServletContext();
-        // Map<String, Map<Integer, String>> dictionaryMap= (Map<String, Map<Integer, String>>) servletContext.getAttribute("dictionaryMap");
-        // Map<Integer, String> role_types = dictionaryMap.get("role_types");
-        // role_types.get(.getRoleTypes());
         String token = tokenService.generateToken(yonghu.getId(),username, "yonghu", "用户");
         R r = R.ok();
         r.put("token", token);
